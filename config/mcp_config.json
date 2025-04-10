@@ -1,0 +1,21 @@
+
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "python",
+      "args": [
+        "tools/file_tool.py",
+        "C:/Users/you/Documents/projects",
+        "D:/mantis/"
+      ]
+    },
+    "n8n": {
+      "command": "python",
+      "args": [
+        "tools/n8n_tool.py",
+        "--webhook",
+        "http://localhost:5678/webhook/task"
+      ]
+    }
+  }
+}
