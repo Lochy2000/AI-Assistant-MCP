@@ -19,31 +19,53 @@ The CLI interface lets you interact with the system easily.
 ## 🧱 File Structure (as of now)
 
 ai_assistant_mcp/
+
 ├── main.py                    # Entry point of the app
+
 ├── config/
+
 │   └── mcp_config.json        # MCP config using Claude-style structure
+
 ├── core/
+
 │   ├── controller.py          # Routes commands to agents/tools
+
 │   ├── registry.py            # Registers and stores agents/tools
+
 │   └── mcp_loader.py          # Loads MCP config from JSON
+
 ├── llm/
+
 │   ├── base.py                # Abstract base for LLMs
+
 │   ├── ollama_wrapper.py      # Interface to local LLMs via Ollama
+
 │   └── openai_wrapper.py      # Future cloud fallback wrapper
+
 ├── agents/
 │   ├── base.py                # Abstract base for agents
+
 │   ├── code_agent.py          # Code generation agent
+
 │   └── diagnostics_agent.py   # System diagnostics agent
+
 ├── tools/
 │   ├── base.py                # Abstract base for tools
+
 │   ├── file_tool.py           # File I/O operations
+
 │   ├── command_tool.py        # Shell command execution
+
 │   ├── specs_tool.py          # System spec fetcher (CPU, RAM, Disk)
+
 │   └── n8n_tool.py            # Trigger n8n workflows via webhook
 ├── ui/
+
 │   └── cli.py                 # CLI interface to test the system
+
 └── utils/
     ├── helpers.py             # Misc utility functions
+    
     └── logger.py              # Logging wrapper (not yet implemented)
 
 ## 🚀 Setup Instructions
