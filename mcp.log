@@ -1,0 +1,80 @@
+[2025-04-10 17:41:12] [SpecsTool] info_type=cpu => CPU: AMD64 Family 23 Model 1 Stepping 1, AuthenticAMD, Cores: 8, Threads: 16
+[2025-04-10 17:41:12] [DiagnosticsAgent] check cpu => CPU: AMD64 Family 23 Model 1 Stepping 1, AuthenticAMD, Cores: 8, Threads: 16
+[2025-04-10 17:41:12] [SpecsTool] info_type=ram => RAM: 15.93 GB total, 6.65 GB available
+[2025-04-10 17:41:12] [DiagnosticsAgent] check ram => RAM: 15.93 GB total, 6.65 GB available
+[2025-04-10 17:41:12] [SpecsTool] info_type=disk => Disk: 232.29 GB total, 170.47 GB free
+[2025-04-10 17:41:12] [DiagnosticsAgent] check disk => Disk: 232.29 GB total, 170.47 GB free
+[2025-04-10 17:41:12] [DiagnosticsAgent] check gpu # should trigger invalid fallback => [DiagnosticsAgent] Unrecognized command. Try: check disk, check cpu, run echo test
+[2025-04-10 17:43:18] [FileTool] write generated_code.js => [FileTool] Wrote to generated_code.js
+[2025-04-10 17:43:18] [CodeAgent] build a toggle switch component => Saved to generated_code.js
+[2025-04-10 17:43:38] [FileTool] write test.txt => [FileTool] Wrote to test.txt
+[2025-04-10 17:43:38] [FileTool] read test.txt => logging test
+[2025-04-10 17:45:05] [FileTool] write generated_code.js => [FileTool] Wrote to generated_code.js
+[2025-04-10 17:45:05] [CodeAgent] build a toggle switch component => Saved to generated_code.js
+[2025-04-11 09:30:57] [FileTool] write generated_code.js => [FileTool] Wrote to generated_code.js
+[2025-04-11 09:30:58] [CodeAgent] create a countdown timer in HTML and JavaScript => Saved to generated_code.js
+[2025-04-11 09:44:42] [FileTool] write generated_code_20250411_094441.py => [FileTool Error] 'charmap' codec can't encode character '\uff1a' in position 2035: character maps to...
+[2025-04-11 09:44:42] [CodeAgent] build a REST API in Python => Saved to generated_code_20250411_094441.py
+[2025-04-11 09:47:23] [FileTool] write generated_code_20250411_094723.py => [FileTool] Wrote to generated_code_20250411_094723.py
+[2025-04-11 09:47:23] [CodeAgent] build a REST API in Python => Saved to generated_code_20250411_094723.py
+[2025-04-11 09:52:10] [FileTool] write generated_code_20250411_095210.py => [FileTool] Wrote to generated_code_20250411_095210.py
+[2025-04-11 09:52:10] [CodeAgent] build a REST API in Python => Saved to generated_code_20250411_095210.py
+[2025-04-11 09:56:17] [FileTool] write generated\project_20250411_0956_build_a_rest_api_in_python/main.py => [FileTool] Wrote to generated\project_20250411_0956_build_a_rest_api_in_python/main.py
+[2025-04-11 09:56:17] [CodeAgent] build a REST API in Python => Saved to generated\project_20250411_0956_build_a_rest_api_in_python/main.py
+[2025-04-11 09:56:44] [FileTool] write generated\project_20250411_0956_build_a_rest_api_in_python/main.py => [FileTool] Wrote to generated\project_20250411_0956_build_a_rest_api_in_python/main.py
+[2025-04-11 09:56:44] [CodeAgent] build a REST API in Python => Saved to generated\project_20250411_0956_build_a_rest_api_in_python/main.py
+[2025-04-11 10:01:51] [FileTool] write generated\project_20250411_1001_create_a_python_cli_calculator/main.py => [FileTool] Wrote to generated\project_20250411_1001_create_a_python_cli_calculator/main.py
+[2025-04-11 10:01:51] [CodeAgent] create a python CLI calculator => Saved to generated\project_20250411_1001_create_a_python_cli_calculator/main.py
+[2025-04-11 10:09:00] [FileTool] write generated\project_20250411_1009_create_a_python_cli_calculator/main.py => [FileTool] Wrote to generated\project_20250411_1009_create_a_python_cli_calculator/main.py
+[2025-04-11 10:09:00] [FileTool] write generated\project_20250411_1009_create_a_python_cli_calculator\prompt.txt => [FileTool] Wrote to generated\project_20250411_1009_create_a_python_cli_calculator\prompt.txt
+[2025-04-11 10:09:00] [FileTool] write generated\project_20250411_1009_create_a_python_cli_calculator\output.md => [FileTool] Wrote to generated\project_20250411_1009_create_a_python_cli_calculator\output.md
+[2025-04-11 10:09:00] [CodeAgent] create a python CLI calculator => Saved to generated\project_20250411_1009_create_a_python_cli_calculator/main.py
+[2025-04-11 11:04:51] [mcp] [INFO] Logging initialized at level INFO
+[2025-04-11 11:06:45] [mcp] [INFO] Logging initialized at level INFO
+[2025-04-11 11:09:32] [mcp] [INFO] Logging initialized at level INFO
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered agent 'test_agent' with ID fa59c327-4004-43d8-8e05-f390f0ba56c0
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered tool 'test_tool' with ID 07198714-996a-4bf4-b69c-98bb4aa8face
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered agent 'code' with ID abb1e2d8-86f5-43a3-a86e-66d7d5f088a7
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered CodeAgent
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered agent 'diagnostics' with ID 23fca08d-9f54-4e22-8327-d415f67116a7
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered DiagnosticsAgent
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered agent 'help' with ID 2ad9815f-865a-4a15-a4c3-b5d85845dc6e
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered HelpAgent
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered tool 'file' with ID 06bf27db-51d4-4d0d-a36e-c4573828bfdd
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered FileTool
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered tool 'command' with ID f7b9b544-1bd1-4660-a721-efb91e2c60c5
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered CommandTool
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered tool 'specs' with ID 8681eedf-2343-41b4-9a48-4e257bf6fa99
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered SpecsTool
+[2025-04-11 11:09:32] [mcp.registry] [INFO] Registered tool 'n8n' with ID 433df182-09b4-471d-98fc-e82a23a3ec87
+[2025-04-11 11:09:32] [mcp.controller] [INFO] Registered N8nTool
+[2025-04-11 11:09:32] [mcp.tools.file] [INFO] [FileTool] Wrote to test_file_tool.txt
+[2025-04-11 11:09:32] [FileTool] write test_file_tool.txt => Success
+[2025-04-11 11:09:32] [mcp] [INFO] FileTool: write test_file_tool.txt
+[2025-04-11 11:09:32] [mcp.tools.file] [INFO] [FileTool] Read from test_file_tool.txt
+[2025-04-11 11:09:32] [FileTool] read test_file_tool.txt => Success
+[2025-04-11 11:09:32] [mcp] [INFO] FileTool: read test_file_tool.txt
+[2025-04-11 11:09:32] [mcp.tools.file] [INFO] [FileTool] Got info for test_file_tool.txt
+[2025-04-11 11:09:32] [FileTool] info test_file_tool.txt => Success
+[2025-04-11 11:09:32] [mcp] [INFO] FileTool: info test_file_tool.txt
+[2025-04-11 11:09:32] [mcp.tools.file] [INFO] [FileTool] Deleted file test_file_tool.txt
+[2025-04-11 11:09:32] [FileTool] delete test_file_tool.txt => Success
+[2025-04-11 11:09:32] [mcp] [INFO] FileTool: delete test_file_tool.txt
+[2025-04-11 11:09:38] [mcp] [INFO] Logging initialized at level INFO
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered agent 'code' with ID 04393f65-4537-47ad-b8cc-9881fe05a057
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered CodeAgent
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered agent 'diagnostics' with ID 82388303-ddbc-4752-8241-f7a7beb59742
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered DiagnosticsAgent
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered agent 'help' with ID 50993598-2884-40e6-92b4-48f6305c3018
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered HelpAgent
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered tool 'file' with ID 30385a9b-a100-40dd-b1f5-28714fb021d2
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered FileTool
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered tool 'command' with ID f8dc9512-3da5-4d60-bebd-b4ae6ca3bf79
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered CommandTool
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered tool 'specs' with ID 677ad38f-d0cd-4204-89c5-bbb759252a3f
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered SpecsTool
+[2025-04-11 11:09:38] [mcp.registry] [INFO] Registered tool 'n8n' with ID a7e3fdce-9822-4748-8368-3878371a1450
+[2025-04-11 11:09:38] [mcp.controller] [INFO] Registered N8nTool
+[2025-04-11 11:10:19] [mcp.tools.file] [INFO] [FileTool] Read from readme.md
+[2025-04-11 11:10:19] [FileTool] read readme.md => Success
+[2025-04-11 11:10:19] [mcp] [INFO] FileTool: read readme.md
