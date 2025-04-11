@@ -6,181 +6,234 @@ A modular AI assistant system inspired by Claude Desktop and Cursor, designed to
 
 This assistant is built around a modular architecture where:
 
-The Controller (core logic) routes user input to various agents.
+- The Controller (core logic) routes user input to various agents.
+- Agents handle specific domains like code generation or diagnostics.
+- Tools are utilities agents can use (file access, shell commands, system specs, webhooks).
+- A local or remote LLM handles reasoning and generation (via wrappers).
+- The CLI interface lets you interact with the system easily.
 
-Agents handle specific domains like code generation or diagnostics.
+## 🔄 Recent Architectural Enhancements
 
-Tools are utilities agents can use (file access, shell commands, system specs, webhooks).
+The system has recently undergone significant architectural improvements to establish a more robust foundation:
 
-A local or remote LLM handles reasoning and generation (via wrappers).
+### 1. Event-Based Communication System
+- Implemented an event bus for inter-component communication
+- Added event subscription and publishing capabilities 
+- Components can now respond to system events without tight coupling
 
-The CLI interface lets you interact with the system easily.
+### 2. Session Management
+- Created a session system to track user interactions over time
+- Implemented context storage within sessions for state management
+- Added session history tracking for better user experience
 
-## 🧱 File Structure (as of now)
+### 3. Enhanced Component Architecture
+- Redesigned base classes for agents and tools with metadata support
+- Added capability and dependency management for components
+- Created a more powerful registry system with categorization
+
+### 4. Asynchronous Operations
+- Added support for async/await patterns throughout the system
+- Implemented non-blocking operations for better performance
+- Created a middleware pipeline for processing commands
+
+### 5. Robust Error Handling
+- Improved error detection and reporting
+- Added graceful dependency management
+- Enhanced logging system for better diagnostics
+
+### 6. Memory & State Management
+- Added persistent memory for agents between executions
+- Implemented structured data storage for components
+- Created history tracking for operations
+
+## 🧱 File Structure
 
 ai_assistant_mcp/
-
-├── main.py                    # Entry point of the app
-
+├── main.py                    # 🔹 Entry point of the app
+│
 ├── config/
-
-│   └── mcp_config.json        # MCP config using Claude-style structure
-
-├── core/
-
-│   ├── controller.py          # Routes commands to agents/tools
-
-│   ├── registry.py            # Registers and stores agents/tools
-
-│   └── mcp_loader.py          # Loads MCP config from JSON
-
-├── llm/
-
-│   ├── base.py                # Abstract base for LLMs
-
-│   ├── ollama_wrapper.py      # Interface to local LLMs via Ollama
-
-│   └── openai_wrapper.py      # Future cloud fallback wrapper
-
-├── agents/
-│   ├── base.py                # Abstract base for agents
-
-│   ├── code_agent.py          # Code generation agent
-
-│   └── diagnostics_agent.py   # System diagnostics agent
-
-├── tools/
-│   ├── base.py                # Abstract base for tools
-
-│   ├── file_tool.py           # File I/O operations
-
-│   ├── command_tool.py        # Shell command execution
-
-│   ├── specs_tool.py          # System spec fetcher (CPU, RAM, Disk)
-
-│   └── n8n_tool.py            # Trigger n8n workflows via webhook
+│   └── mcp_config.json        # 🌐 Claude-style config for agents/tools
+│
+├── core/                      # 🧠 Core system logic
+│   ├── controller.py          # Enhanced controller with event system and sessions
+│   ├── registry.py            # Improved registry with metadata and discovery
+│   ├── events.py              # Event bus for inter-component communication
+│   ├── adapters.py            # Adapters for legacy components
+│   └── mcp_loader.py          # Loads and parses config
+│
+├── llm/                       # 🧠 LLM Wrappers (local/cloud)
+│   ├── base.py                # LLM interface
+│   ├── ollama_wrapper.py      # Wrapper for local models (via Ollama)
+│   └── openai_wrapper.py      # (optional) API-based fallback
+│
+├── agents/                    # 🤖 Modular AI agents
+│   ├── base.py                # Enhanced agent base with metadata and memory
+│   ├── code_agent.py          # Improved code agent with project capabilities
+│   ├── diagnostics_agent.py   # System diagnostics agent
+│   └── help_agent.py          # Help and documentation agent
+│
+├── tools/                     # 🛠️ Plug-in utilities
+│   ├── base.py                # Enhanced tool base with metadata and async support
+│   ├── file_tool.py           # Advanced file operations tool
+│   ├── command_tool.py        # Shell command execution tool
+│   ├── specs_tool.py          # System specifications tool
+│   └── n8n_tool.py            # Workflow automation trigger (placeholder)
+│
 ├── ui/
-
-│   └── cli.py                 # CLI interface to test the system
-
-└── utils/
-    ├── helpers.py             # Misc utility functions
-    
-    └── logger.py              # Logging wrapper (not yet implemented)
+│   └── cli.py                 # 💬 CLI interaction layer
+│
+└── utils/                     # ⚙️ General helpers
+    ├── helpers.py             # Argument parsing utilities
+    └── logger.py              # Enhanced logging with structured events
 
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repo and navigate into it:
 
+```bash
 git clone <repo-url>
 cd ai_assistant_mcp
+```
 
-#### 2. Set up a virtual environment (optional but recommended):
+### 2. Set up a virtual environment (optional but recommended):
 
+```bash
 python -m venv venv
-.\venv\Scripts\activate  # Windows
+.env\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
+```
 
 ### 3. Install dependencies:
-There are no dependencies yet. Future ones will be added to requirements.txt.
+
+```bash
+# Core dependencies (minimal functionality)
+pip install -e .
+
+# Optional: for full functionality with system diagnostics
+pip install psutil
+```
 
 ### 4. Install and run Ollama:
+
 Download from https://ollama.com
 
+```bash
 ollama run deepseek-coder
+```
 
 ### 5. Run the CLI interface:
 
+```bash
 python main.py
+```
 
-Then try commands like:
+Or with debug mode:
 
-run code create a react app
-run diagnostics check system
+```bash
+python main.py --debug
+```
+
+### 6. Try commands like:
+
+```bash
+# Basic commands
+help
+list agents
+list tools
+
+# Getting help on specific topics
+run help code
+run help diagnostics
+run help tools
+
+# Code generation
+run code create a python calculator
+run code create a new project for a react todo app
+run code add a file called styles.css to add styling for the todo app
+
+# System diagnostics
+run diagnostics check cpu
+run diagnostics check ram
+run diagnostics check os
+
+# Direct tool usage
+use tool file action=read path=readme.md
+use tool file action=write path=test.txt content="hello world"
+use tool command raw_input="echo Hello from terminal"
+```
 
 ## ⚙️ How It Works
 
-### main.py
+### Enhanced Architecture
 
-- Loads the MCP config and starts the controller loop.
+1. **Event-Based Communication**:
+   - Components communicate via events
+   - Events can be published and subscribed to
+   - Components react to system state changes
 
-### config/mcp_config.json
+2. **Session Management**:
+   - User interactions are tracked in sessions
+   - Sessions maintain context between commands
+   - Session history tracks user activities
 
-- Defines external modules (e.g. n8n, file access paths) in Claude-compatible format.
+3. **Component System**:
+   - Components declare capabilities and dependencies
+   - Registry manages and categorizes components
+   - Metadata provides discoverability and documentation
 
-### core/mcp_loader.py
+4. **Agents**:
+   - Agents use declarative metadata
+   - Memory provides state between executions
+   - Structured error handling and dependency checking
 
-- Reads and parses the MCP config JSON.
+5. **Tools**:
+   - Tools provide parameter validation and schemas
+   - Asynchronous operation for better performance
+   - Progress tracking for long-running operations
 
-### core/registry.py
+## 📍 Implementation Roadmap
 
-- Keeps track of all available agents and tools in dictionaries.
+Phase 1: **Core Infrastructure** ✅
+- ✅ Refactor registry and controller for dependency injection
+- ✅ Implement event bus system
+- ✅ Create standardized message formats
+- ✅ Enhance error handling and logging
 
-### core/controller.py
+Phase 2: **Agent Framework Enhancement** 🔄
+- ✅ Implement agent communication protocol
+- ✅ Add persistent memory capabilities
+- ✅ Create agent lifecycle management
+- ⏳ Develop agent capability discovery mechanism
 
- Central brain of the project. It:
+Phase 3: **Tool System Upgrades** 🔄
+- ✅ Enhance tool interface with capability descriptors
+- ✅ Implement permission system for tools
+- ⏳ Create tool dependency resolution
+- ⏳ Add progress reporting for long-running operations
 
-- Loads all agents/tools from their classes
+Phase 4: **System Integration** ⏳
+- ⏳ VSCode extension integration framework
+- ⏳ File system monitoring capabilities
+- ⏳ Process management enhancements
+- ⏳ Project scaffolding system
 
-- Listens for user input
+Phase 5: **API Layer** ⏳
+- ⏳ REST API for system interaction
+- ⏳ WebSocket support for real-time communication
+- ⏳ Authentication and authorization layer
+- ⏳ API documentation and client libraries
 
-- Routes run <agent> commands to the correct agent with arguments
+Phase 6: **GUI Development** ⏳
+- ⏳ Web-based interface
+- ⏳ Real-time updates and notifications
+- ⏳ Project management UI
+- ⏳ Settings and configuration interface
 
-### agents/base.py
+## 💡 Long-Term Vision
 
-- Defines an abstract Agent class with a run(input_text) method.
-
-### tools/base.py
-
-- Defines an abstract Tool class with an execute(**kwargs) method.
-
-### agents/code_agent.py
-
-- Currently prints back received input. Will later call LLM (via Ollama wrapper) to generate code.
-
-### agents/diagnostics_agent.py
-
-- Currently prints back input. Later will use SpecsTool and CommandTool.
-
-### tools/*_tool.py
-
-These are tools for file access, CLI execution, specs gathering, and automation:
-
-FileTool → read/write files
-
-- CommandTool → run bash/cmd commands
-
-- SpecsTool → get CPU/RAM/Disk/OS info
-
-- n8nTool → send requests to local n8n workflows
-
-### llm/ollama_wrapper.py
-
-- Will provide a class to talk to your local LLM models (like Deepseek-Coder, Mistral).
-
-📍 Next Milestones
-
-Implement Tool base class and wire tools into agents
-
-Build OllamaLLM wrapper
-
-Add real logic inside CodeAgent and DiagnosticsAgent
-
-Expand controller.py to handle use tool commands
-
-Add tests and CLI options (like --debug or --agent) in cli.py
-
-Optional: Add logging in logger.py
-
-💡 Long-Term Vision
-
-Frontend GUI using Flask or Tauri
-
-Memory/plan management agent
-
-Multi-agent task delegation
-
-Cloud fallback to OpenAI or GitHub Models
-
-VSCode extension integration
-
-Vector DB integration (RAG)
+- Frontend GUI using Flask or Tauri
+- Memory/plan management agent
+- Multi-agent task delegation
+- Cloud fallback to OpenAI or GitHub Models
+- VSCode extension integration
+- Vector DB integration (RAG)
